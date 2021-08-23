@@ -1,0 +1,27 @@
+#%RAML 1.0 Extension
+extends: craft_online_shopping21.raml
+usage: this uses for admin to add all allowed methods(to add additional responsiblities)
+/products:
+  get:
+  post:
+    responses:
+      201:
+        body:
+          application/json:
+            example:
+              [{
+
+              }]
+  put:
+  delete:
+  /{productid}:
+    get:
+    post:
+    put:
+    delete:
+/users:
+  get:
+  post:
+  put:
+  delete:
+    

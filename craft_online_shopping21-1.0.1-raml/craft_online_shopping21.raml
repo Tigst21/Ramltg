@@ -1,0 +1,97 @@
+#%RAML 1.0
+title: Craft_Online_Shopping21
+uses:
+  lib: library.raml
+/Products:
+  description: get all list of products
+  get:
+    queryParameters:
+      Product_id:
+        type: integer
+        description: the id of the Product
+        required: True
+        example: 8988
+      name:
+        type: string
+        description: the name of the product
+        maxLength: 10
+        minLength: 2
+        required: True
+        example:
+          Dell
+      Catagory_id:
+        type: integer
+        description: id of the catagory
+        required: false
+        example:
+          5
+    headers:
+      Session:
+        description: connection session is stored
+        type: string
+        required: false
+    responses:
+      200:
+        body:
+          application/json:
+            type: lib.product[]
+            example: !include examples/products.raml
+  is:
+    lib.response             
+      
+      
+
+  /{Product_id}:
+    description: get specific product by id
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              type: lib.product
+              example:
+                !include examples/product.raml
+    is:
+      lib.response
+       
+/User:
+  post:
+    
+    body:
+      application/json:
+        
+        example:
+          {
+            username: "john",
+            email: "john123@gmail.com"
+          }
+    
+  type:
+    lib.resource:
+      exampleReference1:
+        {
+          uid: 8787
+        }
+ 
+/Order:
+  post:
+    
+    body:
+      application/json:
+        type: lib.order[]
+        example:
+          [{
+            orderid: 4545,
+            userid: 8787,
+            name: "Dell",
+            date: "2021-8-5"
+          }]
+  type:
+   lib.resource:
+      exampleReference1:
+        {
+           msg: "user placed order"
+        }
+/Catagory:
+  get:
+    
