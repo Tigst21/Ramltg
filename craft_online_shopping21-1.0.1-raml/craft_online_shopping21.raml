@@ -93,5 +93,24 @@ uses:
            msg: "user placed order"
         }
 /Catagory:
-  get:
+  
+   get:
+      responses:
+        200:
+          body:
+            application/json:
+              type: lib.catagory[]
+              example:
+               [ {
+                  catagoryid: 23,
+                  catagoryname: "dell inspiron 24",
+                  price: 4000
+                },
+                {
+                  catagoryid: 23,
+                  catagoryname: "dell inspiron 5400",
+                  price: 7000
+                }]
     
+   is:
+     lib.response
